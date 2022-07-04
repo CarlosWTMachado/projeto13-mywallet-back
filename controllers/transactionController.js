@@ -11,6 +11,7 @@ export async function NovaEntrada(req, res) {
 		if(!sessao) return res.sendStatus(409);
 		await db.collection("transacoes").insertOne({
 			... body,
+			valor: parseInt(body.valor),
 			tipo: 'entrada',
 			data: dayjs().format('DD/MM'),
 			userId: sessao.userId,
@@ -34,6 +35,7 @@ export async function NovaSaida(req, res) {
 		if(!sessao) return res.sendStatus(409);
 		await db.collection("transacoes").insertOne({
 			... body,
+			valor: parseInt(body.valor),
 			tipo: 'saida',
 			data: dayjs().format('DD/MM'),
 			userId: sessao.userId,
