@@ -10,6 +10,6 @@ server.use(json());
 server.use(authRouter);
 server.use(TransactionRouter);
 
-server.listen(5000, () => {
-	console.log("Rodando em http://localhost:5000");
+server.listen(process.env.PORT, () => {
+	console.log("Rodando ...");
 });
