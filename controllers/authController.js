@@ -10,7 +10,11 @@ export async function signUp(req, res) {
 		const encontrado = await db.collection("usuario")
 		.findOne({nome: stripHtml(body.nome).result.trim()});
 		if(encontrado) return res.sendStatus(409);
-		await db.collection("usuario").insertOne({... body, senha: password});
+		await db.collection("usuario").insertOne({
+			nome: body.nome,
+			email: body.email,
+			senha: password
+		});
 		return res.sendStatus(201);
 	} catch (error) {
 		return res.status(500).send(error);

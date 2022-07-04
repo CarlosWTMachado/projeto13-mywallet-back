@@ -8,7 +8,7 @@ export async function validaCadastro(req, res, next) {
 		confirma_senha: joi.string().required()
 	});
 	const validation = cadastroSchema.validate(req.body, {abortEarly: false});
-	if(validation.error || senha != confirma_senha) return res.status(422).send(validation?.error.details.map(v => v.message));
+	if(validation.error || req.body.senha != req.body.confirma_senha) return res.status(422).send(validation?.error.details.map(v => v.message));
 	next();
 }
 
