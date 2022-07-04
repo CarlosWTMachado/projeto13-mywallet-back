@@ -13,7 +13,8 @@ export async function signUp(req, res) {
 		await db.collection("usuario").insertOne({
 			nome: body.nome,
 			email: body.email,
-			senha: password
+			senha: password,
+			saldo: 0
 		});
 		return res.sendStatus(201);
 	} catch (error) {
